@@ -21,18 +21,14 @@ export const fetchDataCleanup = () => ({
 export const fetchData = payload => async dispatch => {
    
   try {
-    let page;
     dispatch(fetchDataStart());
-    if(!payload.page) {
-        page = 1
-    } else {
-        page = payload.page;
-    }
+    
     //fetch data from backend
-    const data = await axios.get(`https://blog.epower.ng/wp-json/wp/v2/posts?page=${page}`)
+    const data = await axios.get(`https://blog.epower.ng/wp-json/wp/v2/posts?page=${payload}`)
 
+    console.log(data)
     dispatch(fetchDataSuccess(data));
   } catch (err) {
-    dispatch(fetchDataFail(error));
+    dispatch(fetchDataFail(err));
   }
 }
