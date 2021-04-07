@@ -31,5 +31,11 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             }
         ]
-    }
+    },
+    resolve: {
+        fallback: {
+          fs: false,
+          buffer: false,
+        },
+      },
 }
